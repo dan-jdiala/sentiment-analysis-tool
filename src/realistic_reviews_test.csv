@@ -1,0 +1,245 @@
+Username,Review,Sentiment,Positive,Negative,Confidence,Timestamp
+pat_brown,Complete waste of money. Product broke after two days of use.,NEGATIVE,0,4,32.0%,2025-12-03T21:03:58.141013
+DanaBrown,"Love the design and functionality, but it arrived damaged and the refund process was a nightmare.",MIXED,5,7,51.2%,2025-02-09T21:03:58.141013
+AshDavis,Hard to say. It's okay I guess? Not sure if I like it.,NEUTRAL,0,0,100.0%,2025-09-17T21:03:58.141013
+pat_johnson,Absolutely thrilled with my purchase. Couldn't be happier!,MIXED,1,2,50.0%,2025-10-16T21:03:58.141013
+river_johnson,"Not what I ordered, but it's actually pretty good anyway...",POSITIVE,1,0,30.0%,2025-10-01T21:03:58.141013
+JamieBrown,Nothing special about this. It's just a regular product.,NEUTRAL,0,0,100.0%,2025-03-11T21:03:58.141013
+ChrisDavis,"Beautiful packaging and presentation, but the product itself is poorly made and fell apart quickly.",MIXED,2,5,49.3%,2026-01-20T21:03:58.141013
+PhoenixBrown,Disgusting quality... Completely fell apart almost immediately...,MIXED,3,4,51.4%,2025-09-08T21:03:58.141013
+PatJohnson,"Amazing features and fast shipping, but the product stopped working after just a few weeks...",POSITIVE,6,0,51.4%,2025-10-13T21:03:58.141013
+StormSmith,Terrible quality. Would not recommend. Very disappointed.,MIXED,3,6,50.0%,2025-02-13T21:03:58.141013
+AshWilson,Fairly average... Works as expected but nothing exceptional...,NEUTRAL,0,0,100.0%,2025-11-01T21:03:58.141013
+DanaBrown,Fantastic experience from start to finish. 5 stars!,MIXED,3,5,50.6%,2025-03-13T21:03:58.141013
+SamJohnson,Absolute garbage... Don't waste your time or money on this...,MIXED,1,2,50.0%,2025-07-22T21:03:58.141013
+RileyDavis,Terrible quality. Would not recommend. Very disappointed.,MIXED,3,6,50.0%,2025-08-22T21:03:58.141013
+SkyJohnson,Fantastic experience from start to finish. 5 stars!!!,MIXED,3,5,50.6%,2025-10-21T21:03:58.141013
+sam_smith,"Excellent communication from the seller, but the item arrived with missing components.",MIXED,3,1,48.8%,2025-04-05T21:03:58.141013
+sam_wilson,Regret buying this. Total disappointment on all fronts.,NEGATIVE,0,4,32.0%,2025-06-24T21:03:58.141013
+storm_wilson,Pretty standard product. It's fine if you want basic functionality.,NEUTRAL,0,0,100.0%,2025-04-02T21:03:58.141013
+phoenix_davis,"Not bad, but nothing to write home about. Average product for the price.",MIXED,2,2,52.5%,2025-05-21T21:03:58.141013
+morgan_wilson,"Great initial impression, but quality issues became apparent after a few days of use...",MIXED,5,4,51.7%,2025-10-08T21:03:58.141013
+alex_davis,Absolutely love this product! Exceeded all my expectations. Highly recommend!,POSITIVE,5,0,41.7%,2025-08-24T21:03:58.141013
+ChrisWilson,Unacceptable quality. Should be ashamed selling this.,MIXED,4,3,51.4%,2025-03-18T21:03:58.141013
+chris_brown,Poor quality and worse customer service. Very frustrated.,NEGATIVE,0,4,32.0%,2025-12-14T21:03:58.141013
+quinn_smith,Best purchase I've made in a long time. Great value for the price.,MIXED,4,2,50.0%,2025-07-05T21:03:58.141013
+chris_brown,"Not impressive, but it does the job... You get what you pay for...",NEGATIVE,0,1,30.0%,2026-01-17T21:03:58.141013
+PhoenixBrown,"It's alright... Could be better, could be worse...",NEGATIVE,1,3,30.0%,2025-09-02T21:03:58.141013
+MorganJohnson,Awful experience. Product arrived damaged and customer service was unhelpful.,NEGATIVE,0,7,61.2%,2025-03-26T21:03:58.141013
+ash_johnson,"Beautiful product, fast shipping, responsive seller. Perfect!!!",POSITIVE,7,0,61.2%,2025-12-12T21:03:58.141013
+riley_brown,Nothing special about this... It's just a regular product...,NEUTRAL,0,0,100.0%,2025-12-06T21:03:58.141013
+quinn_wilson,"The materials feel premium, but it's not as durable as I would expect for this price range.",NEGATIVE,0,7,61.2%,2025-07-25T21:03:58.141013
+MorganWilson,Outstanding customer service and excellent product quality... Very satisfied!,POSITIVE,11,0,91.7%,2025-03-08T21:03:58.141013
+blake_brown,"Really nice aesthetic, but the user experience is confusing and the manual is unclear.",MIXED,1,8,46.7%,2025-07-07T21:03:58.141013
+RileyWilson,"It works fine, though I wouldn't rave about it. Pretty standard quality.",NEUTRAL,0,0,100.0%,2025-12-07T21:03:58.141013
+jamie_wilson,Love everything about this. Great craftsmanship and attention to detail.,POSITIVE,3,0,30.0%,2025-10-01T21:03:58.141013
+RiverJohnson,Perfect example of false advertising. Supposedly 'high quality'... clearly not.,MIXED,8,4,50.0%,2025-07-17T21:03:58.141013
+ash_brown,Abysmal quality... By far the worst product I've purchased...,NEGATIVE,0,2,30.0%,2025-07-07T21:03:58.141013
+RileyBrown,"Oh sure, exactly as described... if the description was completely wrong. 🤡",NEGATIVE,0,6,51.4%,2025-05-16T21:03:58.141013
+MorganDavis,"Impressive design with some clever features, but reliability is questionable based on my experience.",MIXED,6,8,51.4%,2025-03-18T21:03:58.141013
+sage_davis,"It's okay, does what it's supposed to do. Nothing special, nothing terrible.",NEUTRAL,0,0,100.0%,2025-08-01T21:03:58.141013
+PatDavis,"The product quality is excellent, but the customer service was absolutely terrible. Very disappointed with how they handled my complaint.",MIXED,6,10,50.6%,2025-01-31T21:03:58.141013
+storm_smith,It's serviceable... Gets the job done without any major issues...,NEGATIVE,0,2,30.0%,2025-11-26T21:03:58.141013
+river_wilson,Exceeded expectations in every way. Will be ordering more!!!,POSITIVE,1,0,30.0%,2025-09-20T21:03:58.141013
+SamBrown,"Not bad, but nothing to write home about. Average product for the price.",MIXED,2,2,52.5%,2025-05-03T21:03:58.141013
+BlakeSmith,It's acceptable but nothing to get excited about.,NEGATIVE,0,3,30.0%,2025-05-23T21:03:58.141013
+ash_davis,"Not impressive, but it does the job. You get what you pay for.",NEGATIVE,0,1,30.0%,2025-08-08T21:03:58.141013
+SageWilson,Excellent product! Exactly what I needed... Very recommended!,POSITIVE,5,1,34.3%,2025-05-14T21:03:58.141013
+ChrisJohnson,Outstanding in every aspect. Worth every penny!!!,POSITIVE,4,0,32.0%,2025-03-29T21:03:58.141013
+RileySmith,"Decent enough for the price, though I wouldn't say it's excellent.",MIXED,7,4,50.5%,2025-02-20T21:03:58.141013
+JordanSmith,Pretty middle-of-the-road. Average in every way.,NEUTRAL,0,0,0.0%,2025-07-17T21:03:58.141013
+RiverSmith,Works but kinda weird. Different from what I expected.,NEGATIVE,0,1,30.0%,2025-08-10T21:03:58.141013
+SkyJohnson,Love how it breaks after two uses... Super quality... 🤡,NEGATIVE,4,6,30.0%,2025-08-22T21:03:58.141013
+jordan_smith,It's acceptable but nothing to get excited about.,NEGATIVE,0,3,30.0%,2025-01-29T21:03:58.141013
+SageBrown,Outstanding customer service and excellent product quality... Very satisfied!,POSITIVE,11,0,91.7%,2025-05-19T21:03:58.141013
+SageBrown,Not worth it at all. Broke after minimal use.,NEGATIVE,0,2,30.0%,2025-04-30T21:03:58.141013
+dana_johnson,Nightmare experience. Product failed and no refund offered.,NEGATIVE,0,6,51.4%,2025-12-24T21:03:58.141013
+SkySmith,Unacceptable quality. Should be ashamed selling this.,MIXED,4,3,51.4%,2025-08-26T21:03:58.141013
+AshWilson,Defective product. Stopped working within a week.,MIXED,1,2,50.0%,2025-10-28T21:03:58.141013
+riley_smith,"Some great aspects to this product, but critical features are missing or poorly implemented.",MIXED,2,8,48.0%,2025-11-27T21:03:58.141013
+JamieBrown,"Perfect quality, arrived on time, great communication... A+ seller!",POSITIVE,8,0,71.1%,2025-05-25T21:03:58.141013
+quinn_johnson,Awful experience. Product arrived damaged and customer service was unhelpful.,NEGATIVE,0,7,61.2%,2025-03-28T21:03:58.141013
+AlexJohnson,It's acceptable but nothing to get excited about.,NEGATIVE,0,3,30.0%,2025-08-09T21:03:58.141013
+morgan_davis,Disgusting quality. Completely fell apart almost immediately.,MIXED,3,4,51.4%,2025-08-08T21:03:58.141013
+taylor_smith,Absolute garbage. Don't waste your time or money on this.,MIXED,1,2,50.0%,2025-12-31T21:03:58.141013
+phoenix_brown,"Excellent communication from the seller, but the item arrived with missing components...",MIXED,3,1,48.8%,2025-12-03T21:03:58.141013
+StormWilson,It's okay but not great. Does the job adequately.,NEUTRAL,0,0,100.0%,2025-10-14T21:03:58.141013
+phoenix_smith,"Beautiful packaging and presentation, but the product itself is poorly made and fell apart quickly.",MIXED,2,5,49.3%,2025-12-09T21:03:58.141013
+taylor_johnson,Excellent product!!! Exactly what I needed. Very recommended!!!,POSITIVE,5,1,34.3%,2025-05-06T21:03:58.141013
+QuinnJohnson,"Great value for money, but the build quality feels cheap and it broke after a month of light use...",MIXED,5,5,52.5%,2025-09-15T21:03:58.141013
+chris_smith,"It's decent, but I've seen better for less money elsewhere.",NEUTRAL,0,0,100.0%,2026-01-19T21:03:58.141013
+SageWilson,"It's alright. Could be better, could be worse.",NEGATIVE,1,3,30.0%,2025-12-07T21:03:58.141013
+sam_wilson,Love everything about this. Great craftsmanship and attention to detail.,POSITIVE,3,0,30.0%,2025-03-12T21:03:58.141013
+SageDavis,Stunning quality and fast delivery... Extremely impressed!,POSITIVE,6,0,51.4%,2025-08-19T21:03:58.141013
+phoenix_brown,Perfect example of false advertising. Supposedly 'high quality'... clearly not.,MIXED,8,4,50.0%,2025-08-14T21:03:58.141013
+pat_davis,Pathetic product. Save your money and look elsewhere.,MIXED,1,2,50.0%,2025-02-07T21:03:58.141013
+jamie_brown,"Amazing features and fast shipping, but the product stopped working after just a few weeks.",POSITIVE,6,0,51.4%,2025-09-13T21:03:58.141013
+RileyBrown,Fairly average. Works as expected but nothing exceptional.,NEUTRAL,0,0,100.0%,2025-10-04T21:03:58.141013
+storm_wilson,Stunning quality and fast delivery. Extremely impressed!,POSITIVE,6,0,51.4%,2025-07-28T21:03:58.141013
+sky_smith,"Can't complain, but I'm not jumping for joy either.",NEUTRAL,0,0,100.0%,2025-12-18T21:03:58.141013
+ChrisSmith,Unacceptable quality. Should be ashamed selling this.,MIXED,4,3,51.4%,2025-06-17T21:03:58.141013
+SkySmith,Pretty middle-of-the-road... Average in every way...,NEUTRAL,0,0,0.0%,2025-06-12T21:03:58.141013
+sky_davis,Nightmare experience. Product failed and no refund offered.,NEGATIVE,0,6,51.4%,2025-03-12T21:03:58.141013
+blake_davis,Exceeded expectations in every way. Will be ordering more!!!,POSITIVE,1,0,30.0%,2025-03-10T21:03:58.141013
+SkyJohnson,Incredible product. Works even better than advertised. So happy!,POSITIVE,6,0,51.4%,2025-12-16T21:03:58.141013
+StormDavis,Pretty standard product. It's fine if you want basic functionality.,NEUTRAL,0,0,100.0%,2025-05-20T21:03:58.141013
+jamie_wilson,Dreadful. Everything about this was disappointing.,NEGATIVE,0,4,32.0%,2025-09-24T21:03:58.141013
+AlexDavis,Works but kinda weird. Different from what I expected.,NEGATIVE,0,1,30.0%,2025-05-27T21:03:58.141013
+jamie_johnson,Absolutely thrilled with my purchase. Couldn't be happier!!!,MIXED,1,2,50.0%,2025-02-15T21:03:58.141013
+SkyDavis,Regret buying this. Total disappointment on all fronts.,NEGATIVE,0,4,32.0%,2025-05-19T21:03:58.141013
+AlexSmith,Amazing quality and super fast shipping... Will definitely order again!,POSITIVE,9,0,81.0%,2025-12-07T21:03:58.141013
+JamieJohnson,"Perfect quality, arrived on time, great communication... A+ seller!",POSITIVE,8,0,71.1%,2025-09-06T21:03:58.141013
+QuinnDavis,Defective product. Stopped working within a week.,MIXED,1,2,50.0%,2025-08-29T21:03:58.141013
+AshBrown,"Beautiful packaging and presentation, but the product itself is poorly made and fell apart quickly.",MIXED,2,5,49.3%,2025-08-13T21:03:58.141013
+ash_davis,Amazing quality and super fast shipping... Will definitely order again!,POSITIVE,9,0,81.0%,2025-11-21T21:03:58.141013
+RiverJohnson,"Decent enough for the price, though I wouldn't say it's excellent...",MIXED,7,4,50.5%,2025-06-22T21:03:58.141013
+PatJohnson,Not worth it at all. Broke after minimal use.,NEGATIVE,0,2,30.0%,2025-02-27T21:03:58.141013
+CaseyWilson,Incredible product. Works even better than advertised. So happy!,POSITIVE,6,0,51.4%,2025-04-26T21:03:58.141013
+alex_smith,Love it! The build quality is exceptional and it arrived quickly...,POSITIVE,7,0,61.2%,2025-02-21T21:03:58.141013
+JamieJohnson,Awful experience. Product arrived damaged and customer service was unhelpful.,NEGATIVE,0,7,61.2%,2025-12-28T21:03:58.141013
+JamieWilson,It's okay but not great. Does the job adequately.,NEUTRAL,0,0,100.0%,2025-10-21T21:03:58.141013
+alex_smith,"It's alright. Could be better, could be worse.",NEGATIVE,1,3,30.0%,2025-05-20T21:03:58.141013
+CaseyBrown,Love it! The build quality is exceptional and it arrived quickly...,POSITIVE,7,0,61.2%,2025-06-06T21:03:58.141013
+RileySmith,"Love the design and functionality, but it arrived damaged and the refund process was a nightmare.",MIXED,5,7,51.2%,2025-05-02T21:03:58.141013
+SamSmith,"Not what I ordered, but it's actually pretty good anyway.",POSITIVE,1,0,30.0%,2025-08-09T21:03:58.141013
+SageJohnson,This product is amazing! Best investment I've made.,POSITIVE,5,0,41.7%,2025-03-12T21:03:58.141013
+PhoenixSmith,Fantastic deal for the price. So pleased with my purchase!,POSITIVE,6,2,35.6%,2025-12-30T21:03:58.141013
+sky_davis,Utterly useless. Doesn't do what it claims to do.,NEGATIVE,0,3,30.0%,2025-09-15T21:03:58.141013
+MorganBrown,"Fast delivery and good communication, but the product itself has significant defects...",MIXED,3,4,51.4%,2025-06-08T21:03:58.141013
+AlexDavis,"It's decent, but I've seen better for less money elsewhere...",NEUTRAL,0,0,100.0%,2025-11-22T21:03:58.141013
+AshDavis,"The materials feel premium, but it's not as durable as I would expect for this price range.",NEGATIVE,0,7,61.2%,2025-05-19T21:03:58.141013
+BlakeSmith,Extremely disappointed. Quality is far below expectations.,MIXED,3,4,51.4%,2025-04-07T21:03:58.141013
+blake_davis,"Perfect fit and color, but durability is a major concern for the price being charged.",MIXED,3,5,50.6%,2025-10-20T21:03:58.141013
+sky_brown,"Amazing features and fast shipping, but the product stopped working after just a few weeks.",POSITIVE,6,0,51.4%,2026-01-04T21:03:58.141013
+RileyDavis,Love it! The build quality is exceptional and it arrived quickly.,POSITIVE,7,0,61.2%,2025-08-12T21:03:58.141013
+dana_davis,"Oh wow, fantastic, another product that falls apart immediately. Really amazing work. 🤡",POSITIVE,7,6,30.0%,2025-08-02T21:03:58.141013
+sam_johnson,This is exactly what I was looking for... Perfect!,POSITIVE,3,0,30.0%,2025-10-22T21:03:58.141013
+taylor_davis,Poor quality and worse customer service. Very frustrated.,NEGATIVE,0,4,32.0%,2025-09-18T21:03:58.141013
+DanaWilson,Wonderful! Can't fault this product... Highly recommended...,POSITIVE,6,1,43.8%,2026-01-07T21:03:58.141013
+TaylorWilson,"Disappointed at first, but it grew on me after a while...",NEGATIVE,0,4,32.0%,2025-12-02T21:03:58.141013
+storm_johnson,Incredible product. Works even better than advertised. So happy!!!,POSITIVE,6,0,51.4%,2025-06-15T21:03:58.141013
+casey_davis,"Excellent communication from the seller, but the item arrived with missing components.",MIXED,3,1,48.8%,2025-08-30T21:03:58.141013
+CaseyJohnson,This is exactly what I was looking for... Perfect!,POSITIVE,3,0,30.0%,2025-05-24T21:03:58.141013
+blake_wilson,Phenomenal!!! Exactly as described. Customer service was helpful too.,POSITIVE,6,0,51.4%,2025-04-28T21:03:58.141013
+jordan_johnson,Dreadful. Everything about this was disappointing.,NEGATIVE,0,4,32.0%,2025-05-26T21:03:58.141013
+PhoenixBrown,Excellent product! Exactly what I needed. Very recommended!,POSITIVE,5,1,34.3%,2025-02-02T21:03:58.141013
+chris_davis,"Oh sure, exactly as described......... if the description was completely wrong... 🤡",NEGATIVE,0,6,51.4%,2025-04-04T21:03:58.141013
+phoenix_johnson,Infuriating experience. Product failed and seller ignored complaints.,NEGATIVE,0,9,81.0%,2025-07-04T21:03:58.141013
+casey_davis,Best purchase I've made in a long time. Great value for the price.,MIXED,4,2,50.0%,2025-07-11T21:03:58.141013
+phoenix_davis,"Fast delivery and gud communication, but the product itself has significant defects.",MIXED,2,4,50.0%,2025-05-22T21:03:58.141013
+DanaWilson,Stunning quality and fast delivery... Extremely impressed!,POSITIVE,6,0,51.4%,2025-08-06T21:03:58.141013
+sage_brown,It's serviceable... Gets the job done without any major issues...,NEGATIVE,0,2,30.0%,2025-10-25T21:03:58.141013
+SamBrown,"Decent enough for the price, though I wouldn't say it's excellent.",MIXED,7,4,50.5%,2025-02-02T21:03:58.141013
+ChrisSmith,"Beautiful product, fast shipping, responsive seller. Perfect!",POSITIVE,7,0,61.2%,2025-12-21T21:03:58.141013
+JamieDavis,Exceeded expectations in every way. Will be ordering more!,POSITIVE,1,0,30.0%,2025-06-04T21:03:58.141013
+RileyDavis,"Fantastic customer service, but the actual product quality doesn't match the price at all.",POSITIVE,7,0,61.2%,2025-04-26T21:03:58.141013
+StormJohnson,"Love the style and it looks great, but the functionality is poor and performance is unreliable.",MIXED,3,5,50.6%,2025-02-27T21:03:58.141013
+taylor_brown,Complete waste of money. Product broke after two days of use.,NEGATIVE,0,4,32.0%,2025-07-18T21:03:58.141013
+RileyWilson,Fantastic experience from start to finish... 5 stars!,MIXED,3,5,50.6%,2025-03-15T21:03:58.141013
+StormBrown,Abysmal quality. By far the worst product I've purchased.,MIXED,3,4,51.4%,2025-10-12T21:03:58.141013
+blake_johnson,"It's okay, does what it's supposed to do. Nothing special, nothing terrible.",NEUTRAL,0,0,100.0%,2025-05-06T21:03:58.141013
+JamieWilson,Infuriating experience... Product failed and seller ignored complaints...,NEGATIVE,0,9,81.0%,2025-09-14T21:03:58.141013
+ash_brown,Poor quality and worse customer service... Very frustrated...,NEGATIVE,0,2,30.0%,2025-09-13T21:03:58.141013
+sage_smith,Utterly useless. Doesn't do what it claims to do.,NEGATIVE,0,3,30.0%,2025-02-27T21:03:58.141013
+taylor_brown,"It's functional but unremarkable. Neither good nor bad, just average.",NEUTRAL,0,0,100.0%,2025-10-11T21:03:58.141013
+alex_smith,Best purchase I've made in a long time. Great value for the price.,MIXED,4,2,50.0%,2025-08-03T21:03:58.141013
+taylor_wilson,"It works fine, though I wouldn't rave about it. Pretty standard quality.",NEUTRAL,0,0,100.0%,2025-01-29T21:03:58.141013
+SageBrown,"Can't complain, but I'm not jumping for joy either.",NEUTRAL,0,0,100.0%,2025-10-31T21:03:58.141013
+StormWilson,"Love the design and functionality, but it arrived damaged and the refund process was a nightmare.",MIXED,5,7,51.2%,2026-01-24T21:03:58.141013
+TaylorWilson,Wonderful! Can't fault this product. Highly recommended.,POSITIVE,6,1,43.8%,2025-08-23T21:03:58.141013
+sky_smith,"Haven't used it yet, but the packaging looks promising. Will update later.",MIXED,1,2,50.0%,2025-04-16T21:03:58.141013
+storm_smith,It's a product that exists... Does product things...,NEUTRAL,0,0,0.0%,2025-05-06T21:03:58.141013
+SageDavis,Worst purchase ever. Cheap materials and poor construction.,NEGATIVE,0,8,71.1%,2025-09-07T21:03:58.141013
+PatDavis,Nothing special about this. It's just a regular product.,NEUTRAL,0,0,100.0%,2025-07-21T21:03:58.141013
+blake_davis,"Really nice aesthetic, but the user experience is confusing and the manual is unclear.",MIXED,1,8,46.7%,2025-06-18T21:03:58.141013
+dana_wilson,"Great value for money, but the build quality feels cheap and it broke after a month of light use...",MIXED,5,5,52.5%,2025-10-28T21:03:58.141013
+blake_brown,"It's functional but unremarkable. Neither good nor bad, just average.",NEUTRAL,0,0,100.0%,2025-08-21T21:03:58.141013
+JamieSmith,"Great initial impression, but quality issues became apparent after a few days of use.",MIXED,5,4,51.7%,2025-04-05T21:03:58.141013
+JordanBrown,Fantastic deal for the price... So pleased with my purchase!,POSITIVE,6,2,35.6%,2025-07-14T21:03:58.141013
+BlakeSmith,Extremely disappointed. Quality is far below expectations.,MIXED,3,4,51.4%,2025-12-11T21:03:58.141013
+quinn_johnson,Horrible product. Doesn't work as advertised at all.,NEGATIVE,0,5,41.7%,2025-07-19T21:03:58.141013
+AshWilson,"Fantastic customer service, but the actual product quality doesn't match the price at all.",POSITIVE,7,0,61.2%,2025-11-07T21:03:58.141013
+pat_wilson,"Impressive design with some clever features, but reliability is questionable based on my experience.",MIXED,6,8,51.4%,2025-10-13T21:03:58.141013
+jordan_brown,"Sure, it works... if by 'works' you mean doesn't work at all. Great purchase.",MIXED,2,2,50.0%,2025-08-12T21:03:58.141013
+TaylorWilson,Horrible product... Doesn't work as advertised at all...,NEGATIVE,0,5,41.7%,2026-01-22T21:03:58.141013
+PatSmith,Absolutely terrible. Would give zero stars if possible.,NEGATIVE,0,7,61.2%,2025-12-31T21:03:58.141013
+JamieJohnson,Pretty middle-of-the-road... Average in every way...,NEUTRAL,0,0,0.0%,2025-02-16T21:03:58.141013
+AshDavis,"Sure, it works... if by 'works' you mean doesn't work at all. Great purchase.",MIXED,2,2,50.0%,2025-02-19T21:03:58.141013
+sky_johnson,Disgusting quality. Completely fell apart almost immediately.,MIXED,3,4,51.4%,2025-10-08T21:03:58.141013
+dana_wilson,"Some aspects are good, others less so. Mixed feelings overall.",NEUTRAL,0,0,100.0%,2025-09-11T21:03:58.141013
+PhoenixBrown,Outstanding in every aspect. Worth every penny!,POSITIVE,4,0,32.0%,2026-01-15T21:03:58.141013
+DrewBrown,"Beautiful product, fast shipping, responsive seller. Perfect!",POSITIVE,7,0,61.2%,2025-06-15T21:03:58.141013
+DanaSmith,Still waiting for delivery. Can't rate yet.,NEGATIVE,0,1,30.0%,2025-05-20T21:03:58.141013
+blake_davis,"The product quality is excellent, but the customer service was absolutely terrible. Very disappointed with how they handled my complaint.",MIXED,6,10,50.6%,2025-08-01T21:03:58.141013
+RiverSmith,Phenomenal! Exactly as described. Customer service was helpful too.,POSITIVE,6,0,51.4%,2025-03-24T21:03:58.141013
+DrewJohnson,Complete waste of money. Product broke after two days of use.,NEGATIVE,0,4,32.0%,2025-12-05T21:03:58.141013
+SkyDavis,"Love the style and it looks great, but the functionality is poor and performance is unreliable...",MIXED,3,5,50.6%,2026-01-08T21:03:58.141013
+MorganWilson,"Perfect fit and color, but durability is a major concern for the price being charged.",MIXED,3,5,50.6%,2025-03-15T21:03:58.141013
+phoenix_smith,"Haven't used it yet, but the packaging looks promising. Will update later.",MIXED,1,2,50.0%,2025-11-14T21:03:58.141013
+river_johnson,It's serviceable. Gets the job done without any major issues.,NEGATIVE,0,2,30.0%,2025-12-30T21:03:58.141013
+MorganDavis,"Yeah right, this is the 'best product ever'. Come on, it's garbage.",MIXED,3,4,51.0%,2025-12-22T21:03:58.141013
+AlexDavis,Pathetic product. Save your money and look elsewhere.,MIXED,1,2,50.0%,2025-03-29T21:03:58.141013
+taylor_brown,This is exactly what I was looking for... Perfect!,POSITIVE,3,0,30.0%,2025-02-23T21:03:58.141013
+JamieJohnson,Wonderful! Can't fault this product. Highly recommended.,POSITIVE,6,1,43.8%,2025-10-24T21:03:58.141013
+storm_davis,Abysmal quality. By far the worst product I've purchased.,MIXED,3,4,51.4%,2025-10-22T21:03:58.141013
+JordanSmith,Not worth it at all. Broke after minimal use.,NEGATIVE,0,2,30.0%,2025-09-23T21:03:58.141013
+SamJohnson,Absolutely love this product! Exceeded all my expectations... Highly recommend!,POSITIVE,5,0,41.7%,2026-01-19T21:03:58.141013
+pat_wilson,"Impressive design with some clever features, but reliability is questionable based on my experience.",MIXED,6,8,51.4%,2025-03-02T21:03:58.141013
+sage_davis,"Yeah right, this is the 'best product ever'. Come on, it's garbage.",MIXED,3,4,51.0%,2025-02-08T21:03:58.141013
+RiverDavis,Worst purchase ever. Cheap materials and poor construction.,NEGATIVE,0,8,71.1%,2025-10-21T21:03:58.141013
+DanaDavis,"Fantastic customer service, but the actual product quality doesn't match the price at all.",POSITIVE,7,0,61.2%,2025-06-08T21:03:58.141013
+BlakeDavis,"Some great aspects to this product, but critical features are missing or poorly implemented...",MIXED,2,8,48.0%,2025-10-26T21:03:58.141013
+ChrisDavis,"Wonderful, just what I needed......... a broken, useless item...",MIXED,3,4,51.4%,2026-01-06T21:03:58.141013
+RileyBrown,Absolute garbage. Don't waste your time or money on this.,MIXED,1,2,50.0%,2025-05-07T21:03:58.141013
+alex_brown,"It works fine, though I wouldn't rave about it. Pretty standard quality.",NEUTRAL,0,0,100.0%,2025-02-08T21:03:58.141013
+QuinnJohnson,"Love the style and it looks great, but the functionality is poor and performance is unreliable.",MIXED,3,5,50.6%,2025-08-22T21:03:58.141013
+riley_davis,"Fast delivery and gud communication, but the product itself has significant defects.",MIXED,2,4,50.0%,2025-05-01T21:03:58.141013
+DanaJohnson,It's okay but not great. Does the job adequately.,NEUTRAL,0,0,100.0%,2025-06-02T21:03:58.141013
+dana_brown,Extremely disappointed. Quality is far below expectations.,MIXED,3,4,51.4%,2025-11-21T21:03:58.141013
+DanaSmith,Amazing quality and super fast shipping. Will definitely order again!!!,POSITIVE,9,0,81.0%,2025-08-12T21:03:58.141013
+JamieWilson,Terrible quality. Would not recommend. Very disappointed.,MIXED,3,6,50.0%,2025-03-01T21:03:58.141013
+SkyWilson,"The materials feel premium, but it's not as durable as I would expect for this price range.",NEGATIVE,0,7,61.2%,2025-12-22T21:03:58.141013
+JordanWilson,"Great initial impression, but quality issues became apparent after a few days of use.",MIXED,5,4,51.7%,2025-09-21T21:03:58.141013
+AshWilson,"Disappointed at first, but it grew on me after a while...",NEGATIVE,0,4,32.0%,2025-07-23T21:03:58.141013
+RiverSmith,Pathetic product. Save your money and look elsewhere.,MIXED,1,2,50.0%,2025-10-15T21:03:58.141013
+AshDavis,Love everything about this. Great craftsmanship and attention to detail.,POSITIVE,3,0,30.0%,2026-01-09T21:03:58.141013
+pat_brown,Utterly useless... Doesn't do what it claims to do...,NEGATIVE,0,3,30.0%,2025-09-21T21:03:58.141013
+chris_wilson,Phenomenal!!! Exactly as described. Customer service was helpful too.,POSITIVE,6,0,51.4%,2025-04-01T21:03:58.141013
+chris_wilson,Infuriating experience. Product failed and seller ignored complaints.,NEGATIVE,0,9,81.0%,2025-02-09T21:03:58.141013
+TaylorSmith,Outstanding customer service and excellent product quality... Very satisfied!,POSITIVE,11,0,91.7%,2025-05-10T21:03:58.141013
+pat_brown,Absolutely terrible. Would give zero stars if possible.,NEGATIVE,0,7,61.2%,2025-10-30T21:03:58.141013
+blake_smith,It's a product that exists. Does product things.,NEUTRAL,0,0,0.0%,2025-12-26T21:03:58.141013
+JamieWilson,Defective product. Stopped working within a week.,MIXED,1,2,50.0%,2025-02-12T21:03:58.141013
+DanaJohnson,"Some aspects are good, others less so. Mixed feelings overall.",NEUTRAL,0,0,100.0%,2025-07-27T21:03:58.141013
+SageWilson,Still waiting for delivery. Can't rate yet.,NEGATIVE,0,1,30.0%,2025-06-12T21:03:58.141013
+CaseyDavis,Regret buying this. Total disappointment on all fronts.,NEGATIVE,0,4,32.0%,2025-10-31T21:03:58.141013
+riley_smith,This product is amazing! Best investment I've made.,POSITIVE,5,0,41.7%,2025-08-12T21:03:58.141013
+drew_davis,"Some great aspects to this product, but critical features are missing or poorly implemented...",MIXED,2,8,48.0%,2025-05-18T21:03:58.141013
+BlakeJohnson,"Perfect quality, arrived on time, great communication... A+ seller!",POSITIVE,8,0,71.1%,2025-06-19T21:03:58.141013
+QuinnBrown,Better than I expected for the price!!! Pleasantly surprised.,POSITIVE,4,0,32.0%,2025-12-10T21:03:58.141013
+sam_smith,Absolutely terrible. Would give zero stars if possible.,NEGATIVE,0,7,61.2%,2025-08-19T21:03:58.141013
+taylor_wilson,Horrible product. Doesn't work as advertised at all.,NEGATIVE,0,5,41.7%,2025-02-23T21:03:58.141013
+jamie_smith,"Not bad, but nothing to write home about. Average product for the price.",MIXED,2,2,52.5%,2025-07-28T21:03:58.141013
+TaylorWilson,"It's functional but unremarkable. Neither good nor bad, just average.",NEUTRAL,0,0,100.0%,2025-11-26T21:03:58.141013
+alex_johnson,Absolutely love this product! Exceeded all my expectations. Highly recommend!,POSITIVE,5,0,41.7%,2025-04-11T21:03:58.141013
+taylor_wilson,Nightmare experience. Product failed and no refund offered.,NEGATIVE,0,6,51.4%,2025-04-01T21:03:58.141013
+drew_brown,Hard to say. It's okay I guess? Not sure if I like it.,NEUTRAL,0,0,100.0%,2025-01-26T21:03:58.141013
+chris_johnson,Pretty standard product. It's fine if you want basic functionality.,NEUTRAL,0,0,100.0%,2025-04-13T21:03:58.141013
+quinn_davis,Fantastic deal for the price. So pleased with my purchase!,POSITIVE,6,2,35.6%,2025-03-24T21:03:58.141013
+alex_smith,Outstanding in every aspect... Worth every penny!,POSITIVE,4,0,32.0%,2025-07-31T21:03:58.141013
+SkyJohnson,"Really nice aesthetic, but the user experience is confusing and the manual is unclear.",MIXED,1,8,46.7%,2025-07-26T21:03:58.141013
+PatDavis,Fairly average. Works as expected but nothing exceptional.,NEUTRAL,0,0,100.0%,2025-09-15T21:03:58.141013
+MorganSmith,Love how it breaks after two uses. Super quality. 🤡,NEGATIVE,4,6,30.0%,2025-02-10T21:03:58.141013
+jamie_smith,"Perfect fit and color, but durability is a major concern for the price being charged.",MIXED,3,5,50.6%,2025-02-02T21:03:58.141013
+DrewSmith,Dreadful... Everything about this was disappointing...,NEGATIVE,0,4,32.0%,2025-03-30T21:03:58.141013
+SkyWilson,"It's decent, but I've seen better for less money elsewhere.",NEUTRAL,0,0,100.0%,2025-08-12T21:03:58.141013
+AlexWilson,"Oh wow, fantastic, another product that falls apart immediately. Really amazing work. 🤡",POSITIVE,7,6,30.0%,2025-11-22T21:03:58.141013
+ash_smith,Better than I expected for the price! Pleasantly surprised.,POSITIVE,4,0,32.0%,2025-06-23T21:03:58.141013
+alex_wilson,"Wonderful, just what I needed......... a broken, useless item...",MIXED,3,4,51.4%,2025-09-13T21:03:58.141013
+riley_smith,"It's okay, does what it's supposed to do. Nothing special, nothing terrible.",NEUTRAL,0,0,100.0%,2025-07-28T21:03:58.141013
+sam_brown,"Not impressive, but it does the job... You get what you pay for...",NEGATIVE,0,1,30.0%,2026-01-12T21:03:58.141013
+alex_smith,"The product quality is excellent, but the customer service was absolutely terrible. Very disappointed with how they handled my complaint.",MIXED,6,10,50.6%,2025-08-27T21:03:58.141013
+TaylorDavis,"Great value for money, but the build quality feels cheap and it broke after a month of light use...",MIXED,5,5,52.5%,2025-10-25T21:03:58.141013
+jordan_johnson,Absolutely thrilled with my purchase. Couldn't be happier!,MIXED,1,2,50.0%,2025-03-14T21:03:58.141013
+PatJohnson,Worst purchase ever. Cheap materials and poor construction.,NEGATIVE,0,8,71.1%,2025-06-12T21:03:58.141013
+sky_brown,This product is amazing! Best investment I've made.,POSITIVE,5,0,41.7%,2025-03-15T21:03:58.141013

@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+logs/
+data/exports/
+data/backups/.venv/
+venv/
+.idea/
+*.db
+src/saved_reviews*.csv
