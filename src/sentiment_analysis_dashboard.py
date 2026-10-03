@@ -16,44 +16,85 @@ API_BASE_URL = "http://localhost:5000"
 # ========== PAGE CONFIG ==========
 st.set_page_config(
     page_title="Sentiment Analysis Dashboard",
-    page_icon="📊",
+    page_icon="S",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # ========== CUSTOM CSS ==========
+# Warm, cheerful look: cream surfaces, rounded white cards, one color per sentiment.
 st.markdown("""
 <style>
-    .metric-card {
-        background-color: #f0f2f6;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap');
+
+    html, body, .stApp, [data-testid="stMarkdownContainer"], input, textarea, button, label {
+        font-family: 'Nunito', 'Segoe UI', sans-serif;
     }
-    .positive {
-        color: #28a745;
-        font-weight: bold;
+    h1, h2, h3, [data-testid="stHeading"] * {
+        font-family: 'Fredoka', 'Trebuchet MS', sans-serif !important;
+        font-weight: 600 !important;
+        color: #33271e;
+        letter-spacing: 0;
     }
-    .negative {
-        color: #dc3545;
-        font-weight: bold;
+    .stApp {
+        background:
+            radial-gradient(circle at 92% 4%, rgba(255, 194, 60, 0.22), transparent 32%),
+            radial-gradient(circle at 4% 96%, rgba(20, 184, 166, 0.14), transparent 36%),
+            #fff6ec;
     }
-    .neutral {
-        color: #6c757d;
-        font-weight: bold;
+    [data-testid="stSidebar"] {
+        background: #ffeedd;
+        border-right: 1px solid #f4e3d2;
     }
-    .mixed {
-        color: #ffc107;
-        font-weight: bold;
+    [data-testid="stTextArea"] textarea,
+    [data-testid="stTextInput"] input {
+        background: #ffffff;
+        border: 1px solid #ecd3bb;
+        border-radius: 14px;
+        box-shadow: 0 2px 8px rgba(94, 58, 32, 0.06);
     }
-    .confidence-high {
-        color: #28a745;
+    .stButton > button {
+        border-radius: 999px;
+        font-weight: 700;
+        box-shadow: 0 6px 16px rgba(217, 68, 43, 0.18);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .confidence-low {
-        color: #ffc107;
+    .stButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(217, 68, 43, 0.24);
     }
+    [data-testid="stAlert"] {
+        border-radius: 16px;
+    }
+    [data-testid="stPlotlyChart"] {
+        background: #ffffff;
+        border: 1px solid #f4e3d2;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 26px rgba(94, 58, 32, 0.08);
+    }
+    .positive { color: #0b7d70; font-weight: 700; }
+    .negative { color: #c0341c; font-weight: 700; }
+    .neutral  { color: #2f6fb3; font-weight: 700; }
+    .mixed    { color: #b26a00; font-weight: 700; }
+    .confidence-high { color: #0b7d70; }
+    .confidence-low  { color: #b26a00; }
 </style>
 """, unsafe_allow_html=True)
+
+def show_chart(fig, **kwargs):
+    """Render a Plotly figure with the dashboard's warm theme."""
+    fig.update_layout(
+        paper_bgcolor="#ffffff",
+        plot_bgcolor="#ffffff",
+        font=dict(family="Nunito, Segoe UI, sans-serif", color="#33271e"),
+        title_font=dict(family="Fredoka, Trebuchet MS, sans-serif", size=18),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, title_text=""),
+        margin=dict(l=24, r=24, t=84, b=24),
+    )
+    fig.update_xaxes(gridcolor="#f4e3d2", zerolinecolor="#ecd3bb", automargin=True)
+    fig.update_yaxes(gridcolor="#f4e3d2", zerolinecolor="#ecd3bb", automargin=True)
+    st.plotly_chart(fig, theme=None, **kwargs)
 
 # ========== API HELPER FUNCTIONS ==========
 def api_call_cached(endpoint: str, params: dict = None):
@@ -64,16 +105,16 @@ def api_call_cached(endpoint: str, params: dict = None):
         resp.raise_for_status()
         return resp.json()
     except requests.exceptions.ConnectionError:
-        st.error("❌ Cannot connect to API server. Is it running on port 5000?")
+        st.error("Cannot connect to API server. Is it running on port 5000?")
         return None
     except requests.exceptions.Timeout:
-        st.error("❌ API request timed out")
+        st.error("API request timed out")
         return None
     except requests.exceptions.HTTPError as e:
-        st.error(f"❌ API Error: {e.response.status_code}")
+        st.error(f"API Error: {e.response.status_code}")
         return None
     except Exception as e:
-        st.error(f"❌ Error: {str(e)}")
+        st.error(f"Error: {str(e)}")
         return None
 
 def api_call_live(endpoint: str, method: str = "GET", data: dict = None, params: dict = None):
@@ -94,30 +135,30 @@ def api_call_live(endpoint: str, method: str = "GET", data: dict = None, params:
         resp.raise_for_status()
         return resp.json()
     except requests.exceptions.ConnectionError:
-        st.error("❌ Cannot connect to API server. Is it running on port 5000?")
+        st.error("Cannot connect to API server. Is it running on port 5000?")
         return None
     except requests.exceptions.Timeout:
-        st.error(f"❌ API request timed out (waited {timeout}s)")
+        st.error(f"API request timed out (waited {timeout}s)")
         return None
     except requests.exceptions.HTTPError as e:
-        st.error(f"❌ API Error: {e.response.status_code}")
+        st.error(f"API Error: {e.response.status_code}")
         return None
     except Exception as e:
-        st.error(f"❌ Error: {str(e)}")
+        st.error(f"Error: {str(e)}")
         return None
 
 # ========== SIDEBAR NAVIGATION ==========
-st.sidebar.title("📊 Navigation")
+st.sidebar.title("Navigation")
 page = st.sidebar.radio(
     "Select a page:",
-    ["🏠 Home", "📝 Analyze Review", "📦 Batch Analysis", "📈 Dashboard", "📊 Statistics", "⚙️ Settings"]
+    ["Home", "Analyze Review", "Batch Analysis", "Dashboard", "Statistics", "Settings"]
 )
 
 # ========== PAGE: HOME ==========
-if page == "🏠 Home":
-    st.title("🎯 Sentiment Analysis Dashboard")
+if page == "Home":
+    st.title("Sentiment Analysis Dashboard")
     st.markdown("""
-    Welcome to your professional sentiment analysis system! This dashboard allows you to:
+    This dashboard lets you:
     
     - **Analyze Reviews** - Get detailed sentiment analysis with aspect breakdown
     - **View Dashboard** - See visual trends and patterns in your data
@@ -143,47 +184,42 @@ if page == "🏠 Home":
             col1, col2, col3, col4 = st.columns(4)
 
             with col1:
-                st.metric("📝 Total Reviews", total_reviews)
+                st.metric("Total Reviews", total_reviews)
             with col2:
-                st.metric("😊 Positive", positive, f"{(positive/total_reviews*100):.0f}%")
+                st.metric("Positive", positive, f"{(positive/total_reviews*100):.0f}%")
             with col3:
-                st.metric("😞 Negative", negative, f"{(negative/total_reviews*100):.0f}%")
+                st.metric("Negative", negative, f"{(negative/total_reviews*100):.0f}%")
             with col4:
-                st.metric("😐 Neutral", neutral, f"{(neutral/total_reviews*100):.0f}%")
+                st.metric("Neutral", neutral, f"{(neutral/total_reviews*100):.0f}%")
 
             col5, col6 = st.columns(2)
             with col5:
-                st.metric("🔀 Mixed", mixed, f"{(mixed/total_reviews*100):.0f}%")
+                st.metric("Mixed", mixed, f"{(mixed/total_reviews*100):.0f}%")
         else:
-            st.info("📭 No reviews yet. Start by analyzing a review!")
+            st.info("No reviews yet. Analyze a review to get started.")
     else:
-        st.warning("⚠️ Unable to fetch reviews from API")
+        st.warning("Unable to fetch reviews from API")
 
 # ========== PAGE: ANALYZE REVIEW ==========
-elif page == "📝 Analyze Review":
-    st.title("📝 Analyze a Review")
+elif page == "Analyze Review":
+    st.title("Analyze a Review")
 
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        username = st.text_input("👤 Username (optional)", value="")
-    with col2:
-        domain = st.selectbox(
-            "🏢 Domain",
-            ["general", "restaurant", "software", "hotel", "retail"]
-        )
+        username = st.text_input("Username (optional)", value="")
 
     review_text = st.text_area(
-        "✍️ Enter your review:",
+        "Enter your review:",
         height=200,
         placeholder="Type or paste your review here..."
     )
 
-    save_review = st.checkbox("💾 Save to database", value=True)
+    save_review = st.checkbox("Save to database", value=True)
 
-    if st.button("🚀 Analyze", use_container_width=True):
+    if st.button("Analyze", type="primary", use_container_width=True):
         if not review_text.strip():
-            st.error("❌ Please enter a review to analyze!")
+            st.error("Enter a review to analyze.")
         else:
             with st.spinner("Analyzing..."):
                 result = api_call_live(
@@ -192,13 +228,12 @@ elif page == "📝 Analyze Review":
                     data={
                         "text": review_text,
                         "username": username or "Anonymous",
-                        "domain": domain,
                         "save_to_db": save_review
                     }
                 )
 
             if result and result.get('success'):
-                st.success("✅ Analysis Complete!")
+                st.success("Analysis complete")
                 analysis = result.get('analysis', {})
 
                 # Main sentiment result
@@ -228,7 +263,7 @@ elif page == "📝 Analyze Review":
                     st.metric("Score", f"+{pos}/-{neg}")
 
                 # Sentiment breakdown
-                st.subheader("📈 Sentiment Breakdown")
+                st.subheader("Sentiment Breakdown")
                 col1, col2 = st.columns(2)
 
                 with col1:
@@ -236,10 +271,11 @@ elif page == "📝 Analyze Review":
                     fig_pie = px.pie(
                         values=sentiments,
                         names=['Positive', 'Negative'],
-                        color_discrete_map={'Positive': '#28a745', 'Negative': '#dc3545'},
+                        color=['Positive', 'Negative'],
+                        color_discrete_map={'Positive': '#14b8a6', 'Negative': '#ff6b54'},
                         title="Positive vs Negative"
                     )
-                    st.plotly_chart(fig_pie, use_container_width=True)
+                    show_chart(fig_pie, use_container_width=True)
 
                 with col2:
                     st.write("**Sentiment Details:**")
@@ -251,7 +287,7 @@ elif page == "📝 Analyze Review":
                 # Aspects
                 aspects = analysis.get('aspects', {})
                 if aspects:
-                    st.subheader("🎯 Aspect Analysis")
+                    st.subheader("Aspect Analysis")
                     aspects_df = pd.DataFrame([
                         {
                             "Aspect": aspect.upper(),
@@ -266,41 +302,38 @@ elif page == "📝 Analyze Review":
                         x="Aspect",
                         y="Score",
                         color="Sentiment",
-                        color_discrete_map={'POSITIVE': '#28a745', 'NEGATIVE': '#dc3545', 'NEUTRAL': '#6c757d'},
+                        color_discrete_map={'POSITIVE': '#14b8a6', 'NEGATIVE': '#ff6b54', 'NEUTRAL': '#4c9df0'},
                         title="Aspect Sentiment Scores"
                     )
-                    st.plotly_chart(fig_aspects, use_container_width=True)
+                    show_chart(fig_aspects, use_container_width=True)
 
                 # Sarcasm detection
                 if analysis.get('is_sarcastic'):
-                    st.warning(f"🤡 Sarcasm detected! Confidence: {analysis.get('sarcasm_confidence', 0):.0f}%")
+                    st.warning(f"Possible sarcasm detected. Confidence: {analysis.get('sarcasm_confidence', 0):.0f}%")
 
 # ========== PAGE: BATCH ANALYSIS ==========
-elif page == "📦 Batch Analysis":
-    st.title("📦 Batch Analysis")
-    st.markdown("Analyze multiple reviews at once and compare results!")
+elif page == "Batch Analysis":
+    st.title("Batch Analysis")
+    st.markdown("Analyze multiple reviews at once and compare the results.")
 
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        domain = st.selectbox(
-            "🏢 Domain",
-            ["general", "restaurant", "software", "hotel", "retail"]
-        )
+        st.write("")
     with col2:
-        save_to_db = st.checkbox("💾 Save all to database", value=True)
+        save_to_db = st.checkbox("Save all to database", value=True)
 
-    st.subheader("📝 Enter Reviews")
+    st.subheader("Enter Reviews")
 
     input_method = st.radio(
         "Choose input method:",
-        ["📝 Paste Text", "📁 Upload CSV"],
+        ["Paste Text", "Upload CSV"],
         horizontal=True
     )
 
     reviews_list = []
 
-    if input_method == "📝 Paste Text":
+    if input_method == "Paste Text":
         st.markdown("**Format:** `username: review` or just paste reviews (one per line, separated by blank lines)")
 
         batch_text = st.text_area(
@@ -344,7 +377,7 @@ elif page == "📦 Batch Analysis":
                         break
 
                 if review_column is None:
-                    st.error(f"❌ Could not find review column. Available columns: {list(df_uploaded.columns)}")
+                    st.error(f"Could not find review column. Available columns: {list(df_uploaded.columns)}")
                 else:
                     username_column = None
                     for col in ['username', 'Username', 'user', 'User', 'name', 'Name', 'author', 'Author']:
@@ -358,12 +391,12 @@ elif page == "📦 Batch Analysis":
                             'username': row[username_column] if username_column else f"User {idx + 1}"
                         })
 
-                    st.success(f"✅ Loaded {len(reviews_list)} reviews from CSV")
+                    st.success(f"Loaded {len(reviews_list)} reviews from CSV")
             except Exception as e:
-                st.error(f"❌ Error reading CSV: {str(e)}")
+                st.error(f"Error reading CSV: {str(e)}")
 
-    if reviews_list and st.button("🚀 Analyze Batch", use_container_width=True):
-        st.success(f"✅ Analyzing {len(reviews_list)} reviews...")
+    if reviews_list and st.button("Analyze batch", type="primary", use_container_width=True):
+        st.success(f"Analyzing {len(reviews_list)} reviews...")
 
         with st.spinner("Processing..."):
             batch_result = api_call_live(
@@ -377,7 +410,6 @@ elif page == "📦 Batch Analysis":
                         }
                         for r in reviews_list
                     ],
-                    "domain": domain,
                     "save_to_db": save_to_db
                 }
             )
@@ -386,14 +418,14 @@ elif page == "📦 Batch Analysis":
             # Store results AND performance metrics
             st.session_state.batch_results = batch_result.get('results', [])
             st.session_state.performance = batch_result.get('performance', {})  # <-- TIMING DATA
-            st.success(f"✅ Analyzed {len(st.session_state.batch_results)} reviews")
+            st.success(f"Analyzed {len(st.session_state.batch_results)} reviews")
         else:
-            st.error("❌ Batch analysis failed")
+            st.error("Batch analysis failed")
 
     if 'batch_results' in st.session_state and st.session_state.batch_results:
         results = st.session_state.batch_results
 
-        st.subheader("📊 Batch Analysis Summary")
+        st.subheader("Batch Analysis Summary")
 
         col1, col2, col3, col4, col5, col6 = st.columns(6)
 
@@ -405,17 +437,17 @@ elif page == "📦 Batch Analysis":
         avg_conf = sum(r['confidence'] for r in results) / len(results) * 100 if results else 0
 
         with col1:
-            st.metric("📝 Total", total)
+            st.metric("Total", total)
         with col2:
-            st.metric("😊 Positive", positive, f"{(positive/total*100):.0f}%")
+            st.metric("Positive", positive, f"{(positive/total*100):.0f}%")
         with col3:
-            st.metric("😞 Negative", negative, f"{(negative/total*100):.0f}%")
+            st.metric("Negative", negative, f"{(negative/total*100):.0f}%")
         with col4:
-            st.metric("😐 Neutral", neutral, f"{(neutral/total*100):.0f}%")
+            st.metric("Neutral", neutral, f"{(neutral/total*100):.0f}%")
         with col5:
-            st.metric("🔀 Mixed", mixed, f"{(mixed/total*100):.0f}%")
+            st.metric("Mixed", mixed, f"{(mixed/total*100):.0f}%")
         with col6:
-            st.metric("🎯 Avg Confidence", f"{avg_conf:.0f}%")
+            st.metric("Avg Confidence", f"{avg_conf:.0f}%")
 
         # Visualizations
         col1, col2 = st.columns(2)
@@ -425,10 +457,11 @@ elif page == "📦 Batch Analysis":
             fig_pie = px.pie(
                 values=sentiments,
                 names=['Positive', 'Negative', 'Neutral', 'Mixed'],
-                color_discrete_map={'Positive': '#28a745', 'Negative': '#dc3545', 'Neutral': '#6c757d', 'Mixed': '#ffc107'},
+                color=['Positive', 'Negative', 'Neutral', 'Mixed'],
+                color_discrete_map={'Positive': '#14b8a6', 'Negative': '#ff6b54', 'Neutral': '#4c9df0', 'Mixed': '#f5b324'},
                 title="Sentiment Distribution"
             )
-            st.plotly_chart(fig_pie, use_container_width=True)
+            show_chart(fig_pie, use_container_width=True)
 
         with col2:
             scores_data = {
@@ -437,13 +470,13 @@ elif page == "📦 Batch Analysis":
             }
 
             fig_scores = go.Figure()
-            fig_scores.add_trace(go.Box(y=scores_data['Positive Scores'], name='Positive', marker_color='#28a745'))
-            fig_scores.add_trace(go.Box(y=scores_data['Negative Scores'], name='Negative', marker_color='#dc3545'))
+            fig_scores.add_trace(go.Box(y=scores_data['Positive Scores'], name='Positive', marker_color='#14b8a6'))
+            fig_scores.add_trace(go.Box(y=scores_data['Negative Scores'], name='Negative', marker_color='#ff6b54'))
             fig_scores.update_layout(title="Score Distribution", hovermode='closest')
-            st.plotly_chart(fig_scores, use_container_width=True)
+            show_chart(fig_scores, use_container_width=True)
 
         # Detailed results table
-        st.subheader("📋 Detailed Results")
+        st.subheader("Detailed Results")
 
         results_df = pd.DataFrame([
             {
@@ -465,13 +498,13 @@ elif page == "📦 Batch Analysis":
         st.dataframe(results_df, use_container_width=True, height=400)
 
         # Download results
-        st.subheader("📥 Download Results")
+        st.subheader("Download Results")
         col1, col2 = st.columns(2)
 
         with col1:
             csv = results_df.to_csv(index=False)
             st.download_button(
-                label="📊 Download as CSV",
+                label="Download as CSV",
                 data=csv,
                 file_name=f"batch_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
                 mime="text/csv"
@@ -480,15 +513,15 @@ elif page == "📦 Batch Analysis":
         with col2:
             json_data = json.dumps(results, indent=2, default=str)
             st.download_button(
-                label="📄 Download as JSON",
+                label="Download as JSON",
                 data=json_data,
                 file_name=f"batch_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                 mime="application/json"
             )
 
 # ========== PAGE: DASHBOARD ==========
-elif page == "📈 Dashboard":
-    st.title("📈 Sentiment Dashboard")
+elif page == "Dashboard":
+    st.title("Sentiment Dashboard")
 
     result = api_call_cached("/api/v1/reviews", params={"limit": 10000})
 
@@ -516,25 +549,26 @@ elif page == "📈 Dashboard":
                 y='pos_score',
                 color='sentiment',
                 title="Positive Score Over Time",
-                color_discrete_map={'POSITIVE': '#28a745', 'NEGATIVE': '#dc3545', 'NEUTRAL': '#6c757d', 'MIXED': '#ffc107'}
+                color_discrete_map={'POSITIVE': '#14b8a6', 'NEGATIVE': '#ff6b54', 'NEUTRAL': '#4c9df0', 'MIXED': '#f5b324'}
             )
-            st.plotly_chart(fig_timeline, use_container_width=True)
+            show_chart(fig_timeline, use_container_width=True)
 
             col1, col2 = st.columns(2)
 
             with col1:
-                st.subheader("😊 Sentiment Distribution")
+                st.subheader("Sentiment Distribution")
                 sentiment_counts = df['sentiment'].value_counts()
                 fig_dist = px.pie(
                     values=sentiment_counts.values,
                     names=sentiment_counts.index,
-                    color_discrete_map={'POSITIVE': '#28a745', 'NEGATIVE': '#dc3545', 'NEUTRAL': '#6c757d', 'MIXED': '#ffc107'},
+                    color=sentiment_counts.index,
+                    color_discrete_map={'POSITIVE': '#14b8a6', 'NEGATIVE': '#ff6b54', 'NEUTRAL': '#4c9df0', 'MIXED': '#f5b324'},
                     title="Distribution of Sentiments"
                 )
-                st.plotly_chart(fig_dist, use_container_width=True)
+                show_chart(fig_dist, use_container_width=True)
 
             with col2:
-                st.subheader("🎯 Average Scores by Domain")
+                st.subheader("Average Scores by Domain")
                 domain_scores = df.groupby('domain')[['pos_score', 'neg_score']].mean()
                 fig_domain = px.bar(
                     domain_scores,
@@ -543,9 +577,9 @@ elif page == "📈 Dashboard":
                     title="Average Scores by Domain",
                     barmode='group'
                 )
-                st.plotly_chart(fig_domain, use_container_width=True)
+                show_chart(fig_domain, use_container_width=True)
 
-            st.subheader("📊 Confidence Distribution")
+            st.subheader("Confidence Distribution")
             fig_conf = px.histogram(
                 df,
                 x='confidence',
@@ -553,10 +587,10 @@ elif page == "📈 Dashboard":
                 title="Confidence Level Distribution",
                 labels={'confidence': 'Confidence %', 'count': 'Number of Reviews'}
             )
-            st.plotly_chart(fig_conf, use_container_width=True)
+            show_chart(fig_conf, use_container_width=True)
 
             # Aspect Analysis
-            st.subheader("🎯 Aspect Sentiment Overview")
+            st.subheader("Aspect Sentiment Overview")
 
             aspect_result = api_call_live("/api/v1/aspects")
             if aspect_result and aspect_result.get('success'):
@@ -572,13 +606,13 @@ elif page == "📈 Dashboard":
                         barmode="stack",
                         title="Aspect Frequency by Sentiment",
                         color_discrete_map={
-                            'POSITIVE': '#28a745',
-                            'NEGATIVE': '#dc3545',
-                            'NEUTRAL': '#6c757d',
-                            'MIXED': '#ffc107'
+                            'POSITIVE': '#14b8a6',
+                            'NEGATIVE': '#ff6b54',
+                            'NEUTRAL': '#4c9df0',
+                            'MIXED': '#f5b324'
                         }
                     )
-                    st.plotly_chart(fig_aspect_bar, use_container_width=True)
+                    show_chart(fig_aspect_bar, use_container_width=True)
 
                     fig_aspect_score = px.bar(
                         aspects_df,
@@ -588,19 +622,19 @@ elif page == "📈 Dashboard":
                         barmode="group",
                         title="Average Aspect Score by Sentiment"
                     )
-                    st.plotly_chart(fig_aspect_score, use_container_width=True)
+                    show_chart(fig_aspect_score, use_container_width=True)
                 else:
                     st.info("No aspect data available yet.")
             else:
                 st.info("No aspect data available yet.")
         else:
-            st.info("📭 No reviews yet")
+            st.info("No reviews yet")
     else:
-        st.warning("⚠️ Unable to fetch reviews from API")
+        st.warning("Unable to fetch reviews from API")
 
 # ========== PAGE: STATISTICS ==========
-elif page == "📊 Statistics":
-    st.title("📊 Detailed Statistics")
+elif page == "Statistics":
+    st.title("Detailed Statistics")
 
     result = api_call_cached("/api/v1/reviews", params={"limit": 10000})
 
@@ -624,20 +658,20 @@ elif page == "📊 Statistics":
             col1, col2, col3, col4, col5, col6 = st.columns(6)
 
             with col1:
-                st.metric("📝 Total Reviews", len(df))
+                st.metric("Total Reviews", len(df))
             with col2:
-                st.metric("😊 Positive", len(df[df['sentiment'] == 'POSITIVE']))
+                st.metric("Positive", len(df[df['sentiment'] == 'POSITIVE']))
             with col3:
-                st.metric("😞 Negative", len(df[df['sentiment'] == 'NEGATIVE']))
+                st.metric("Negative", len(df[df['sentiment'] == 'NEGATIVE']))
             with col4:
-                st.metric("😐 Neutral", len(df[df['sentiment'] == 'NEUTRAL']))
+                st.metric("Neutral", len(df[df['sentiment'] == 'NEUTRAL']))
             with col5:
-                st.metric("🔀 Mixed", len(df[df['sentiment'] == 'MIXED']))
+                st.metric("Mixed", len(df[df['sentiment'] == 'MIXED']))
             with col6:
                 avg_conf = df['confidence'].mean()
-                st.metric("🎯 Avg Confidence", f"{avg_conf:.0f}%")
+                st.metric("Avg Confidence", f"{avg_conf:.0f}%")
 
-            st.subheader("🔬 Confidence Analysis")
+            st.subheader("Confidence Analysis")
 
             col_a, col_b = st.columns(2)
 
@@ -648,7 +682,7 @@ elif page == "📊 Statistics":
                 low_conf = (df['confidence'] < 50).sum()
                 st.metric("Low Confidence (<50%)", low_conf, f"{(low_conf / len(df) * 100):.1f}%")
 
-            st.subheader("📈 Trends")
+            st.subheader("Trends")
 
             df_sorted['pos_rolling'] = df_sorted['pos_score'].rolling(window=5, min_periods=1).mean()
             df_sorted['neg_rolling'] = df_sorted['neg_score'].rolling(window=5, min_periods=1).mean()
@@ -660,19 +694,19 @@ elif page == "📊 Statistics":
                 y=df_sorted['pos_rolling'],
                 name='Positive (5-review avg)',
                 mode='lines',
-                line=dict(color='#28a745', width=2)
+                line=dict(color='#14b8a6', width=2)
             ))
             fig_trends.add_trace(go.Scatter(
                 x=df_sorted['timestamp_display'],
                 y=df_sorted['neg_rolling'],
                 name='Negative (5-review avg)',
                 mode='lines',
-                line=dict(color='#dc3545', width=2)
+                line=dict(color='#ff6b54', width=2)
             ))
             fig_trends.update_layout(title="Sentiment Trends (5-Review Rolling Average)", hovermode='x unified')
-            st.plotly_chart(fig_trends, use_container_width=True)
+            show_chart(fig_trends, use_container_width=True)
 
-            st.subheader("📋 Recent Reviews")
+            st.subheader("Recent Reviews")
             display_df = df_sorted[['username', 'text', 'sentiment', 'pos_score', 'neg_score', 'confidence', 'timestamp']].copy()
             display_df = display_df.sort_values('timestamp', ascending=False)
             display_df.columns = ['Username', 'Review', 'Sentiment', 'Positive', 'Negative', 'Confidence', 'Timestamp']
@@ -683,19 +717,19 @@ elif page == "📊 Statistics":
 
             st.dataframe(display_df, use_container_width=True)
         else:
-            st.info("📭 No reviews yet")
+            st.info("No reviews yet")
     else:
-        st.warning("⚠️ Unable to fetch reviews from API")
+        st.warning("Unable to fetch reviews from API")
 
 # ========== PAGE: SETTINGS ==========
-elif page == "⚙️ Settings":
-    st.title("⚙️ Settings & Configuration")
+elif page == "Settings":
+    st.title("Settings & Configuration")
 
-    st.subheader("🗄️ Database Management")
+    st.subheader("Database Management")
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("📊 View Database Statistics"):
+        if st.button("View Database Statistics"):
             result = api_call_live("/api/v1/info")
             if result and result.get('success'):
                 info = result.get('database_info', {})
@@ -705,26 +739,26 @@ elif page == "⚙️ Settings":
                 st.info(f"Last review: {info.get('last_review', 'N/A')}")
 
     with col2:
-        st.warning("⚠️ Database management features should be handled via API only")
+        st.warning("Database management features should be handled via API only")
         st.info("For data deletion or advanced management, use the API endpoints directly or contact an administrator.")
-        st.subheader("🗑️ Danger Zone")
+        st.subheader("Danger Zone")
 
-        if st.button("❌ Delete ALL Reviews", type="primary"):
+        if st.button("Delete ALL Reviews", type="primary"):
             with st.spinner("Deleting all reviews..."):
                 result = api_call_live("/api/v1/reviews", method="DELETE")
 
             if result and result.get("success"):
-                st.success("✅ All reviews deleted successfully!")
+                st.success("All reviews deleted.")
                 st.cache_data.clear()
             else:
-                st.error("❌ Failed to delete reviews")
+                st.error("Failed to delete reviews")
 
-    st.subheader("📥 Import/Export")
+    st.subheader("Import/Export")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("💾 Export to CSV"):
+        if st.button("Export to CSV"):
             result = api_call_cached("/api/v1/reviews", params={"limit": 10000})
             if result and result.get('success'):
                 reviews = result.get('reviews', [])
@@ -741,7 +775,7 @@ elif page == "⚙️ Settings":
                     st.warning("No reviews to export")
 
     with col2:
-        if st.button("💾 Export to JSON"):
+        if st.button("Export to JSON"):
             result = api_call_cached("/api/v1/reviews", params={"limit": 10000})
             if result and result.get('success'):
                 reviews = result.get('reviews', [])
