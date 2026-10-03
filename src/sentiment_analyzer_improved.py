@@ -23,7 +23,7 @@ from functools import wraps
 from src.context_intensifiers import IntensifierHandler, CONTEXT_INTENSIFIERS, INTENSIFIERS
 from improved_phrase_adjustments import apply_phrase_adjustments
 from internet_slang import apply_slang_adjustments, detect_internet_slang
-from domain_lexicons import DomainLexicon
+from domain_lexicons import DomainLexicon, Domain
 
 ENABLE_REASONING_TRACE = False
 FUZZY_CACHE = {}
@@ -372,25 +372,75 @@ def get_timing_stats_summary() -> Dict:
 
     return summary
 
-def apply_domain_adjustment_smart(domain: str, raw_text: str, result: Dict) -> Dict:
-    """Only apply domain adjustment if needed."""
-    # Skip if already explicitly neutral
-    # if result["sentiment"] == "NEUTRAL" and result["confidence"] == 1.0:
-    #     return result
-    #
-    # try:
-    #     domain_lex = get_domain_lexicon(domain)
-    #     result = domain_lex.adjust_result_for_domain(domain, raw_text, result)
-    #
-    #     # Preserve MIXED sentiment
-    #     if result["sentiment"] != "MIXED":
-    #         # Domain can adjust, but we allow it
-    #         pass
-    # except Exception as e:
-    #     # Silently fail - don't crash on domain issues
-    #     pass
+# Idioms whose meaning differs from their words (e.g. "steal" is negative, "a steal" is a bargain).
+# Weight replaces the general-lexicon weight of the words inside the phrase. Applies to every domain.
+IDIOMS = {
+    "steal of a deal": 3,
+    "a total steal": 3,
+    "an absolute steal": 3,
+    "a steal": 2,
+    "killer feature": 2,
+    "killer features": 2,
+}
 
-    return result
+_domain_lexicon_instance = None
+
+
+def _get_domain_lexicon() -> DomainLexicon:
+    """Single shared DomainLexicon (building one per review was the original slowdown)."""
+    global _domain_lexicon_instance
+    if _domain_lexicon_instance is None:
+        _domain_lexicon_instance = DomainLexicon()
+    return _domain_lexicon_instance
+
+
+def domain_and_idiom_adjustment(raw_text: str, domain: str = "general") -> Tuple[int, int, List[str]]:
+    """
+    Re-weight terms whose sentiment depends on context, before the final label is decided.
+
+    For each idiom, and for each domain-specific term (a word or phrase from the chosen domain's
+    lexicon that is not in the general one), remove the general-lexicon weight of its words and
+    apply the context weight instead. Longest terms match first, and each span counts once.
+
+    Returns (pos_delta, neg_delta, matched_terms); deltas are applied to the positive and
+    negative score magnitudes.
+    """
+    text = " " + re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s'-]", " ", raw_text.lower())) + " "
+
+    terms = [(phrase, weight) for phrase, weight in IDIOMS.items()]
+    try:
+        domain_enum = Domain((domain or "general").lower())
+    except ValueError:
+        domain_enum = Domain.GENERAL
+    if domain_enum != Domain.GENERAL:
+        lexicons = _get_domain_lexicon().lexicons
+        general_terms = set().union(*lexicons[Domain.GENERAL].values())
+        for weight, words in lexicons[domain_enum].items():
+            terms.extend((term, weight) for term in words if term not in general_terms)
+
+    # Longest phrases first; for duplicates, the stronger weight wins.
+    terms.sort(key=lambda t: (-len(t[0]), -abs(t[1])))
+
+    pos_delta = neg_delta = 0
+    matched = []
+    for term, weight in terms:
+        needle = f" {term} "
+        while needle in text:
+            for token in term.split():
+                base = get_word_points_with_pos(token)
+                if base > 0:
+                    pos_delta -= base
+                elif base < 0:
+                    neg_delta -= -base
+            if weight > 0:
+                pos_delta += weight
+            elif weight < 0:
+                neg_delta += -weight
+            matched.append(term)
+            text = text.replace(needle, " _ ", 1)
+
+    return pos_delta, neg_delta, matched
+
 
 def _init_sentiment_words():
     """Initialize all sentiment words set once at module load."""
@@ -1269,6 +1319,16 @@ def sentiment_analysis(raw_text: str, debug: bool = False, domain: str = "genera
 
     slang_info = detect_internet_slang(raw_text)
 
+    # === 9b. CONTEXT TERMS: IDIOMS + DOMAIN-SPECIFIC WEIGHTS ===
+    dom_pos, dom_neg, context_terms = domain_and_idiom_adjustment(raw_text, domain)
+    if dom_pos or dom_neg:
+        original_pos = max(0, original_pos + dom_pos)
+        original_neg = max(0, original_neg + dom_neg)
+        total_pos = max(0, total_pos + dom_pos)
+        total_neg = max(0, total_neg + dom_neg)
+        if debug:
+            print(f"[Context terms] {context_terms}: pos {dom_pos:+d}, neg {dom_neg:+d}")
+
     # === 10. MIXED SENTIMENT DETECTION (IMPROVED) ===
     mixed_start = time.perf_counter()
 
@@ -1278,10 +1338,10 @@ def sentiment_analysis(raw_text: str, debug: bool = False, domain: str = "genera
         original_pos,
         original_neg,
         has_contrast_mixed,
-        debug=True  # FORCE DEBUG ON for this test
+        debug=debug
     )
 
-    if early_is_mixed:
+    if early_is_mixed and debug:
         print(f"\n[MIXED] '{raw_text[:60]}...'")
         print(f"  Scores: pos={original_pos}, neg={original_neg}")
         print(f"  Reason: {mixed_reason}")
@@ -1370,13 +1430,12 @@ def sentiment_analysis(raw_text: str, debug: bool = False, domain: str = "genera
         "detected_slang": slang_info.get("detected_slang", []),
         "slang_adjustment": slang_info.get("total_adjustment", 0),
         "aspects": aspect_results,
+        "domain": domain,
+        "context_terms": context_terms,
         "text": raw_text
     }
 
-    # === 14. DOMAIN ADJUSTMENT (OPTIONAL) ===
-    # For now, skip domain adjustment - it adds 1 second per review
-    # Uncomment if needed:
-    # result = apply_domain_adjustment_smart(domain, raw_text, result)
+    # Domain-specific weights are applied in step 9b, before the label is decided.
 
     # === 15. RECORD TIMING ===
     total_elapsed = (time.perf_counter() - review_start) * 1000

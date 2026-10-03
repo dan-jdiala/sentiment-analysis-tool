@@ -208,6 +208,8 @@ elif page == "Analyze Review":
 
     with col1:
         username = st.text_input("Username (optional)", value="")
+    with col2:
+        domain = st.selectbox("Domain", ["general", "restaurant", "software", "hotel", "retail"], help="Applies domain-specific word weights")
 
     review_text = st.text_area(
         "Enter your review:",
@@ -228,6 +230,7 @@ elif page == "Analyze Review":
                     data={
                         "text": review_text,
                         "username": username or "Anonymous",
+                        "domain": domain,
                         "save_to_db": save_review
                     }
                 )
@@ -319,7 +322,7 @@ elif page == "Batch Analysis":
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        st.write("")
+        domain = st.selectbox("Domain", ["general", "restaurant", "software", "hotel", "retail"], help="Applies domain-specific word weights")
     with col2:
         save_to_db = st.checkbox("Save all to database", value=True)
 
@@ -410,6 +413,7 @@ elif page == "Batch Analysis":
                         }
                         for r in reviews_list
                     ],
+                    "domain": domain,
                     "save_to_db": save_to_db
                 }
             )

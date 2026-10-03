@@ -7,6 +7,8 @@ A Python NLP tool that classifies reviews as **positive, negative, neutral, or m
 ## Features
 
 - **Lexicon-based sentiment engine** built on spaCy: a ~6,800-term lexicon graded into mild / medium / strong intensity tiers
+- **Domain-specific weights** for restaurant, software, hotel, and retail reviews: the same word can score differently by context ("heavy" pasta is negative; "laggy" only matters for software), and multi-word terms like "great value" or "perfectly cooked" are matched as phrases
+- **Idioms** that override their words' usual meaning ("the price was a steal" is positive, while "steal" alone stays negative)
 - **Linguistic handling**: negation, intensifiers and diminishers, contractions, internet slang, emoji sentiment and emoji-based sarcasm cues, and typo-tolerant fuzzy matching
 - **Aspect-based analysis**: identifies what a review is about (e.g. design, service, value, performance) and scores each aspect separately
 - **Batch processing**: spaCy `nlp.pipe` batching, cached lemmatization, and bulk SQLite inserts
@@ -54,9 +56,14 @@ Configuration is read from a `.env` file (see `src/app_config.py` for the availa
 curl -X POST http://localhost:5000/api/v1/analyze \
   -H "Content-Type: application/json" \
   -d '{"text": "Love the design, but the battery life is terrible.", "save_to_db": false}'
+
+# Domain-specific scoring (general, restaurant, software, hotel, retail)
+curl -X POST http://localhost:5000/api/v1/analyze \
+  -H "Content-Type: application/json" \
+  -d '{"text": "The pasta was heavy.", "domain": "restaurant", "save_to_db": false}'
 ```
 
 ## Limitations
 
 - Rule-based by design: there is no trained model, and no labeled accuracy evaluation yet.
-- The domain-specific adjustment step is currently disabled, so all reviews are scored with the general lexicon.
+- Domain lexicons are hand-curated and small; terms outside them fall back to the general lexicon.
