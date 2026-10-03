@@ -47,6 +47,7 @@ try:
     ENCHANT_AVAILABLE = True
 except (ImportError, enchant.Error):
     print("Warning: enchant not available. Fuzzy matching will be limited.")
+    dictionary = None
     ENCHANT_AVAILABLE = False
 
 # === DICTIONARIES ===
@@ -214,6 +215,12 @@ def find_closest_word_fast(word: str, word_set: Set[str], threshold: float = 0.8
     #Don't fuzzy match these common context words
     context_words = {'quality', 'product', 'service', 'shipping', 'delivery'}
     if word_lower in context_words:
+        FUZZY_CACHE[word_lower] = None
+        return None
+
+    # Fuzzy matching is for typos ("amazng"). A correctly spelled word with no sentiment of its
+    # own must not borrow one from a look-alike ("price" -> "pricey", "honestly" -> "honest").
+    if dictionary is not None and dictionary.check(word_lower):
         FUZZY_CACHE[word_lower] = None
         return None
 
