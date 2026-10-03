@@ -8,7 +8,7 @@ A Python NLP tool that classifies reviews as **positive, negative, neutral, or m
 
 - **Lexicon-based sentiment engine** built on spaCy: a ~6,800-term lexicon graded into mild / medium / strong intensity tiers
 - **Domain-specific weights** for restaurant, software, hotel, and retail reviews: the same word can score differently by context ("heavy" pasta is negative; "laggy" only matters for software), and multi-word terms like "great value" or "perfectly cooked" are matched as phrases
-- **Idioms** that override their words' usual meaning ("the price was a steal" is positive, while "steal" alone stays negative)
+- **Idioms** that override their words' usual meaning ("the price was a steal" is positive, "not a steal" is negative, and "steal" alone stays negative)
 - **Linguistic handling**: negation, intensifiers and diminishers, contractions, internet slang, emoji sentiment and emoji-based sarcasm cues, and typo-tolerant fuzzy matching
 - **Aspect-based analysis**: identifies what a review is about (e.g. design, service, value, performance) and scores each aspect separately
 - **Batch processing**: spaCy `nlp.pipe` batching, cached lemmatization, and bulk SQLite inserts

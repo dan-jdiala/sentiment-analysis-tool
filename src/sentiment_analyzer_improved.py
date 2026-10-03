@@ -383,6 +383,9 @@ IDIOMS = {
     "killer features": 2,
 }
 
+# A negation just before an idiom flips it ("not a steal at all" is negative).
+IDIOM_NEGATORS = {"not", "never", "hardly", "no", "isn't", "wasn't", "aren't", "weren't", "isnt", "wasnt"}
+
 _domain_lexicon_instance = None
 
 
@@ -408,6 +411,7 @@ def domain_and_idiom_adjustment(raw_text: str, domain: str = "general") -> Tuple
     text = " " + re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s'-]", " ", raw_text.lower())) + " "
 
     terms = [(phrase, weight) for phrase, weight in IDIOMS.items()]
+    idiom_set = set(IDIOMS)
     try:
         domain_enum = Domain((domain or "general").lower())
     except ValueError:
@@ -426,12 +430,22 @@ def domain_and_idiom_adjustment(raw_text: str, domain: str = "general") -> Tuple
     for term, weight in terms:
         needle = f" {term} "
         while needle in text:
-            for token in term.split():
-                base = get_word_points_with_pos(token)
-                if base > 0:
-                    pos_delta -= base
-                elif base < 0:
-                    neg_delta -= -base
+            negated = term in idiom_set and any(
+                w in IDIOM_NEGATORS for w in text[: text.index(needle)].split()[-2:]
+            )
+            if negated:
+                # The main pass already flipped these words under the negation, so their
+                # weight may sit on either side; remove it from the positive side and score
+                # the idiom as negative.
+                weight = -abs(weight)
+                pos_delta -= sum(abs(get_word_points_with_pos(t)) for t in term.split())
+            else:
+                for token in term.split():
+                    base = get_word_points_with_pos(token)
+                    if base > 0:
+                        pos_delta -= base
+                    elif base < 0:
+                        neg_delta -= -base
             if weight > 0:
                 pos_delta += weight
             elif weight < 0:
