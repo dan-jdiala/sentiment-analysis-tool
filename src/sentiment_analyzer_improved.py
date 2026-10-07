@@ -122,8 +122,8 @@ EXPLICIT_NEUTRAL_PHRASES = {
 CONTRAST_WORDS = {"but", "however", "although", "though", "yet", "still", "nonetheless"}
 
 NEGATORS = {
-    "not", "no", "never", "n't", "cannot", "could", "won", "should", "nothing",
-    "have", "has", "hardly", "barely", "scarcely", "without", "neither", "nor",
+    "not", "no", "never", "n't", "cannot", "won", "nothing",
+    "hardly", "barely", "scarcely", "without", "neither", "nor",
 }
 
 NON_SENTIMENT_WORDS = {

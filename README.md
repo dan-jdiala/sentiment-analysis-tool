@@ -2,6 +2,8 @@
 
 A Python NLP tool that classifies reviews as **positive, negative, neutral, or mixed**, breaks them down by aspect, and serves results through a REST API and an interactive dashboard.
 
+**Try it in your browser:** a JavaScript port of the scoring rules, using the same lexicon, runs live on [my portfolio](https://dan-jdiala.github.io/#projects). Type a review and watch each word get scored.
+
 ![Dashboard demo: a review is analyzed as MIXED, with positive design and performance and negative service and value](docs/demo.gif)
 
 ## Features
